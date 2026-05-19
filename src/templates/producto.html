@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodev</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/producto.css') }}">
+</head>
+<body>
+    <div class="contenedor_body">
+        <div class="navbar">
+            <!-- IZQUIERDA -->
+            <div class="nav-left">
+                <div class="icon icon-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="logo">GroseryApp</div>
+                <div class="icono-logo"> <img src="{{ url_for('static', filename='logo app/LogoApp.png') }}" alt="Logo"></div>
+            </div>
+
+            <!-- CENTRO -->
+            <div class="nav-center">
+                <input type="text" placeholder="Buscar productos...">
+            </div>
+
+            <!-- DERECHA -->
+            <div class="nav-right">
+                <div class="menu">
+                    <a href="{{ url_for('productos') }}" class="active">Productos</a>
+                    <a href="{{ url_for('Categorias') }}">Categorias</a>                    
+                    <a href="{{ url_for('Pedidos') }}">Pedidos</a>
+                </div>
+                <div class="icons">
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="{{ url_for('dashb') }}"><i class="fas fa-user-circle"></i></a>
+                </div>
+            </div>
+        </div>
+            
+        <!-- Contenedor producto -->
+        <main class="contenedor_producto">
+            <div class="contenedor_informacion">
+                
+                <div class="descripcion">
+                    <div>
+                        <h2>{{ producto[0] }}</h2>
+                        <p class="precio_producto">${{ producto[1] }} cop</p>
+                    </div>
+                    <div class="botones_contador">
+                        <button class="disminuir" id="restar">-</button>
+                        <span class="contador_producto" id="contador">0</span>
+                        <button class="aumentar" id="sumar">+</button>
+                    </div>
+                    <div>
+                        <button class="boton_carrito">Agregar al carrito</button>
+                        <button class="boton_favorito"><i id="icono_favorito" class="fas fa-heart favorite-btn"></i>Favorito</button>
+                    </div>
+                    <div class="descripcion_producto">
+                        <p>Descripcion</p>
+                        <p>{{ producto[2] }}</p>
+                    </div>
+                    <div>
+                        
+                    </div>    
+                </div>
+                <div class="contenedor_imagen">
+                    <img class="imagen_producto" src="{{ producto[3] }}" alt="{{ producto[0] }}">
+                </div>
+            </div>
+        </main>
+
+        <!--Reseñas-->
+        <div class="reviews-section">
+            <h3>Reseñas</h3>
+            <div class="reviews-container">
+                <!-- Reseña 1 -->
+                 <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="reviewer-name">Jhon Castro</p>
+                    <p>Buen producto</p>
+                </div>
+                <!-- Reseña 2 -->
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="reviewer-name">Camila Agamez</p>
+                    <p>100% recomendable</p>
+                </div>
+                <!-- Reseña 3 -->
+                <div class="review-card">
+                    <div class="stars">★★☆☆☆</div>
+                    <p class="reviewer-name">Harold Torres</p>
+                    <p>No estoy satisfecho con el producto</p>
+                </div>
+            </div>
+
+            <div class="more-comments">
+                <a href="{{ url_for('comentarios') }}" class="btn-more">Mas comentarios</a>
+            </div>
+        </div><br><br>
+          
+        <!--footer-->
+        <div class="footer">
+            <a href="#">Soporte</a>
+            <a href="#">Protección de datos</a>
+            <a href="#">Ayuda</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">¿Quiénes somos?</a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/boton-contador.js') }}"></script>
+</body>
+</html>
